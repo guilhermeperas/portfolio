@@ -303,21 +303,27 @@ export default function Home() {
               setFormStatus("loading");
               
               try {
-                const response = await fetch("/api/contact", {
+                const response = await fetch("https://api.web3forms.com/submit", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(formData),
+                  body: JSON.stringify({
+                    access_key: "e066c14b-f962-4045-8854-88840cda7b81",
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    subject: `New Contact Form Submission from ${formData.name}`,
+                  }),
                 });
                 
                 const result = await response.json();
                 
-                if (response.ok) {
+                if (result.success) {
                   setFormStatus("success");
                   setFormMessage(t("formSuccess"));
                   setFormData({ name: "", email: "", message: "" });
                 } else {
                   setFormStatus("error");
-                  setFormMessage(result.error || t("formError"));
+                  setFormMessage(t("formError"));
                 }
               } catch {
                 setFormStatus("error");
