@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   },
   // If deploying to https://guilhermeperas.github.io/portfolio/
   // uncomment the next line:
-  // basePath: "/portfolio",
+  basePath: "/portfolio",
 };
 
 export default nextConfig;
