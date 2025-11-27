@@ -5,9 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // If deploying to https://guilhermeperas.github.io/portfolio/
-  // uncomment the next line:
   basePath: "/portfolio",
+  assetPrefix: "/portfolio",
 };
 
 export default nextConfig;
