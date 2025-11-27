@@ -36,6 +36,7 @@ const translations = {
     
     // Skills
     skillsTitle: "Skills",
+    learningTitle: "Currently Learning",
     
     // Projects
     projectsTitle: "Projects",
@@ -74,13 +75,13 @@ const translations = {
     
     // Hero
     greeting: "Olá, eu sou",
-    tagline: "desenvolvedor full stack.",
-    viewWork: "Ver meu trabalho",
-    getInTouch: "Entre em Contato",
+    tagline: "desenvolvedor.",
+    viewWork: "Projetos",
+    getInTouch: "Contato",
     
     // About
     aboutTitle: "Sobre Mim",
-    aboutText: "Sou um desenvolvedor com paixão por criar soluções elegantes para problemas complexos. Quando não estou programando, você pode me encontrar explorando novas tecnologias ou aproveitando uma boa sessão de academia.",
+    aboutText: "Sou um programador com paixão por criar soluções elegantes para problemas complexos. Quando não estou programando, podes encontrar-me explorando novas tecnologias ou aproveitando uma boa sessão de ginásio.",
     codingFor: "Programando há",
     years: "anos",
     days: "dias",
@@ -90,6 +91,7 @@ const translations = {
     
     // Skills
     skillsTitle: "Habilidades",
+    learningTitle: "Aprendendo Atualmente",
     
     // Projects
     projectsTitle: "Projetos",
@@ -103,17 +105,17 @@ const translations = {
     imagePlaceholder: "Imagem",
     
     // Contact
-    contactTitle: "Entre em Contato",
+    contactTitle: "Contato",
     contactText: "Estou sempre aberto a novas oportunidades e projetos interessantes. Fique à vontade para entrar em contato!",
     nameLabel: "Nome",
-    namePlaceholder: "Seu nome",
+    namePlaceholder: "Nome",
     emailLabel: "Email",
     emailPlaceholder: "seu@email.com",
     messageLabel: "Mensagem",
-    messagePlaceholder: "Sua mensagem...",
+    messagePlaceholder: "Mensagem...",
     sendMessage: "Enviar Mensagem",
-    formSuccess: "Mensagem enviada com sucesso! Entrarei em contato em breve.",
-    formError: "Algo deu errado. Por favor, tente novamente.",
+    formSuccess: "Mensagem enviada com sucesso!",
+    formError: "erro",
     formSending: "Enviando...",
     
     // Footer
