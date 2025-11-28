@@ -68,7 +68,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-6 flex justify-end items-center">
           <div className="flex items-center gap-8">
             <a href="#about" onClick={(e) => scrollToSection(e, "about")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">About</a>
-            <a href="/projects" className="text-white/60 hover:text-purple-400 transition-colors text-sm">Projects</a>
+            <a href="/portfolio/projects" className="text-white/60 hover:text-purple-400 transition-colors text-sm">Projects</a>
             <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">Contact</a>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function Home() {
               View my work <span className="text-xl">↓</span>
             </a>
             <a
-              href="/files/curriculo_guilherme_eng.pdf"
+              href="/portfolio/files/curriculo_guilherme_eng.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all"
@@ -112,7 +112,7 @@ export default function Home() {
             <div className="flex flex-col justify-center">
               <div className="w-48 h-48 rounded-full bg-white/5 border border-white/10 overflow-hidden mb-8">
                 <img 
-                  src="/files/pfp.jpg" 
+                  src="/portfolio/files/pfp.jpg" 
                   alt="Guilherme Pereira" 
                   className="w-full h-full object-cover"
                 />
@@ -262,7 +262,7 @@ export default function Home() {
         {/* View All Projects Button */}
         <div className="h-screen flex items-center justify-center px-6 snap-start snap-always">
           <a
-            href="/projects"
+            href="/portfolio/projects"
             className="inline-flex items-center gap-3 px-10 py-4 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all text-lg"
           >
             View All Projects
