@@ -1,11 +1,9 @@
 "use client";
 
-import { useLanguage } from "./LanguageContext";
 import ParticleBackground from "./components/ParticleBackground";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const { language, toggleLanguage, t } = useLanguage();
   const [showNav, setShowNav] = useState(false);
   const [codingTime, setCodingTime] = useState({ years: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -41,8 +39,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Start date: 4 years ago from now (adjust this to your actual start date)
-    const startDate = new Date("2021-01-01");
+    const startDate = new Date("2020-01-01");
     
     const updateTimer = () => {
       const now = new Date();
@@ -66,20 +63,12 @@ export default function Home() {
     <div id="main-container" className="min-h-screen bg-[#0a0a0f] text-white snap-y snap-mandatory h-screen overflow-y-auto scroll-smooth">
       <ParticleBackground />
       
-      {/* Navigation - only shows after about section */}
       <nav className={`fixed top-0 w-full bg-[#0a0a0f]/90 backdrop-blur-sm z-50 transition-all duration-300 ${showNav ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
         <div className="max-w-6xl mx-auto px-6 py-6 flex justify-end items-center">
           <div className="flex items-center gap-8">
-            <a href="#about" onClick={(e) => scrollToSection(e, "about")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">{t("about")}</a>
-            <a href="#projects" onClick={(e) => scrollToSection(e, "projects")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">{t("projects")}</a>
-            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">{t("contact")}</a>
-            <button
-              onClick={toggleLanguage}
-              className="text-sm text-white/60 hover:text-purple-400 transition-colors font-medium"
-              title={language === "en" ? "Mudar para Português" : "Switch to English"}
-            >
-              {language === "en" ? "PT" : "ENG"}
-            </button>
+            <a href="#about" onClick={(e) => scrollToSection(e, "about")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">About</a>
+            <a href="/projects" className="text-white/60 hover:text-purple-400 transition-colors text-sm">Projects</a>
+            <a href="#contact" onClick={(e) => scrollToSection(e, "contact")} className="text-white/60 hover:text-purple-400 transition-colors text-sm">Contact</a>
           </div>
         </div>
       </nav>
@@ -88,69 +77,81 @@ export default function Home() {
       <section className="h-screen flex items-center px-6 relative z-10 snap-start snap-always">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-light text-white mb-2">
-            {t("greeting")} <span className="text-purple-500">Guilherme</span>.
+            Hello, I'm <span className="text-purple-500">Guilherme</span>.
           </h1>
           <p className="text-4xl md:text-5xl font-light text-white/90 mb-12">
-            {t("tagline")}
+            a software engineer student.
           </p>
-          <a
-            href="#about"
-            onClick={(e) => scrollToSection(e, "about")}
-            className="inline-flex items-center gap-2 px-8 py-3 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all"
-          >
-            {t("viewWork")} <span className="text-xl">↓</span>
-          </a>
+          <div className="flex gap-4">
+            <a
+              href="#about"
+              onClick={(e) => scrollToSection(e, "about")}
+              className="inline-flex items-center gap-2 px-8 py-3 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all"
+            >
+              View my work <span className="text-xl">↓</span>
+            </a>
+            <a
+              href="/curriculo_guilherme_eng.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all"
+            >
+              CV
+            </a>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
       <section id="about" className="h-screen flex items-center px-6 relative z-10 snap-start snap-always">
         <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-3xl md:text-4xl font-light text-white mb-12">
-            {t("aboutTitle")}
+          <h2 className="text-4xl md:text-5xl font-light text-white mb-12">
+            About Me
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Left side - Image and About text */}
-            <div>
-              <div className="aspect-square max-w-sm bg-white/5 border border-white/10 flex items-center justify-center mb-8">
-                <span className="text-white/20 text-lg">{t("imagePlaceholder")}</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col justify-center">
+              <div className="w-48 h-48 rounded-full bg-white/5 border border-white/10 overflow-hidden mb-8">
+                <img 
+                  src="/pfp.jpg" 
+                  alt="Guilherme Pereira" 
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <p className="text-lg text-white/60 leading-relaxed mb-8">
-                {t("aboutText")}
+              <p className="text-xl text-white/60 leading-relaxed mb-8">
+                Currently trying to get into the game dev world, learning Unity and C#. I'm passionate about creating efficient and scalable solutions, and I'm always eager to learn new technologies and improve my skills.
               </p>
               
               {/* Coding Timer */}
               <div className="mt-6">
-                <p className="text-white/40 text-sm mb-2">{t("codingFor")}</p>
+                <p className="text-white/40 text-base mb-2">Coding since</p>
                 <div className="flex gap-4 text-center">
                   <div>
-                    <span className="text-2xl font-light text-purple-500">{codingTime.years}</span>
-                    <p className="text-white/40 text-xs">{t("years")}</p>
+                    <span className="text-3xl font-light text-purple-500">{codingTime.years}</span>
+                    <p className="text-white/40 text-sm">years</p>
                   </div>
                   <div>
-                    <span className="text-2xl font-light text-purple-500">{codingTime.days}</span>
-                    <p className="text-white/40 text-xs">{t("days")}</p>
+                    <span className="text-3xl font-light text-purple-500">{codingTime.days}</span>
+                    <p className="text-white/40 text-sm">days</p>
                   </div>
                   <div>
-                    <span className="text-2xl font-light text-purple-500">{String(codingTime.hours).padStart(2, '0')}</span>
-                    <p className="text-white/40 text-xs">{t("hours")}</p>
+                    <span className="text-3xl font-light text-purple-500">{String(codingTime.hours).padStart(2, '0')}</span>
+                    <p className="text-white/40 text-sm">hours</p>
                   </div>
                   <div>
-                    <span className="text-2xl font-light text-purple-500">{String(codingTime.minutes).padStart(2, '0')}</span>
-                    <p className="text-white/40 text-xs">{t("minutes")}</p>
+                    <span className="text-3xl font-light text-purple-500">{String(codingTime.minutes).padStart(2, '0')}</span>
+                    <p className="text-white/40 text-sm">min</p>
                   </div>
                   <div>
-                    <span className="text-2xl font-light text-purple-500">{String(codingTime.seconds).padStart(2, '0')}</span>
-                    <p className="text-white/40 text-xs">{t("seconds")}</p>
+                    <span className="text-3xl font-light text-purple-500">{String(codingTime.seconds).padStart(2, '0')}</span>
+                    <p className="text-white/40 text-sm">sec</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            {/* Right side - Tech stack */}
-            <div>
-              <h3 className="text-xl font-light text-white mb-6">{t("skillsTitle")}</h3>
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl font-light text-white mb-6">Skills</h3>
               <div className="flex flex-wrap gap-3">
                 {[
                   { name: "JavaScript", icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg> },
@@ -164,7 +165,7 @@ export default function Home() {
                 ].map((tech) => (
                   <span
                   key={tech.name}
-                  className="flex items-center gap-2 px-4 py-2 border border-white/10 text-white/70 text-sm hover:border-purple-500/50 hover:text-purple-400 transition-all"
+                  className="flex items-center gap-2 px-4 py-2 border border-white/10 text-white/70 text-base hover:border-purple-500/50 hover:text-purple-400 transition-all"
                   >
                     {tech.icon}
                     {tech.name}
@@ -173,7 +174,7 @@ export default function Home() {
               </div>
               
               {/* Learning */}
-              <h3 className="text-xl font-light text-white mb-4 mt-8">{t("learningTitle")}</h3>
+              <h3 className="text-2xl font-light text-white mb-4 mt-8">Currently Learning</h3>
               <div className="flex flex-wrap gap-3">
                 {[
                   { name: "Unity", icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M10.4 17.8l-6-3.3V9.5l6-3.4 2.9 1.7-4.8 2.7v3.4l4.8 2.8zm8.9-9.3L22 12l-2.7 3.5-6-3.4v-3L18.1 6zm-6-4L16.1.6l6 3.4v6.7L22 8.5 19.3 12 22 15.5l-.1-2.2v6.7l-6 3.4-2.8-1.9 4.9-2.8V12l-4.9-2.8zm-2.7 4L5.8 6l6-3.4L14.6 4 9.8 6.8v3.4l4.8 2.8-2.8 1.6zm0 9.3l-2.8-1.9v-3.4l-4.8-2.8 2.8-1.6 4.8 2.8z"/></svg> },
@@ -186,7 +187,7 @@ export default function Home() {
                 ].map((tech) => (
                   <span
                     key={tech.name}
-                    className="flex items-center gap-2 px-4 py-2 border border-purple-500/30 text-purple-400/70 text-sm hover:border-purple-500/50 hover:text-purple-400 transition-all"
+                    className="flex items-center gap-2 px-4 py-2 border border-purple-500/30 text-purple-400/70 text-base hover:border-purple-500/50 hover:text-purple-400 transition-all"
                   >
                     {tech.icon}
                     {tech.name}
@@ -202,7 +203,7 @@ export default function Home() {
       <section id="skills" className="py-32 px-6 relative z-10 hidden">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-light text-white mb-12">
-            {t("skillsTitle")}
+            Skills
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS", "Git", "Python"].map((skill) => (
@@ -221,21 +222,21 @@ export default function Home() {
       <section id="projects" className="relative z-10">
         {[
           { 
-            titleKey: "projectOneTitle", 
+            title: "Project One", 
             subtitle: "Social Media App",
-            descKey: "projectOneDesc",
+            desc: "A brief description of this amazing project and the technologies used.",
             color: "from-blue-600 to-purple-600"
           },
           { 
-            titleKey: "projectTwoTitle", 
+            title: "Project Two", 
             subtitle: "Messaging App",
-            descKey: "projectTwoDesc",
+            desc: "Another cool project showcasing different skills and capabilities.",
             color: "from-purple-600 to-pink-600"
           },
           { 
-            titleKey: "projectThreeTitle", 
+            title: "Project Three", 
             subtitle: "Productivity App",
-            descKey: "projectThreeDesc",
+            desc: "Yet another impressive project that solves real-world problems.",
             color: "from-cyan-600 to-blue-600"
           },
         ].map((project, index) => (
@@ -249,7 +250,7 @@ export default function Home() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 blur-3xl scale-110`}></div>
                 <div className="relative bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-lg overflow-hidden">
                   <div className="aspect-[16/10] flex items-center justify-center bg-[#0a0a0f]">
-                    <span className="text-white/20 text-lg">{t("imagePlaceholder")}</span>
+                    <span className="text-white/20 text-lg">Image</span>
                   </div>
                 </div>
               </div>
@@ -257,11 +258,11 @@ export default function Home() {
               {/* Right side - Project Info */}
               <div className={`md:col-span-2 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
                 <h3 className="text-4xl md:text-5xl font-light text-white mb-2">
-                  {t(project.titleKey)}
+                  {project.title}
                 </h3>
                 <p className="text-xl text-purple-400 mb-6">{project.subtitle}</p>
                 <p className="text-lg text-white/60 leading-relaxed mb-8">
-                  {t(project.descKey)}
+                  {project.desc}
                 </p>
                 <div className="flex flex-col gap-4">
                   <a
@@ -283,6 +284,17 @@ export default function Home() {
             </div>
           </div>
         ))}
+        
+        {/* View All Projects Button */}
+        <div className="h-screen flex items-center justify-center px-6 snap-start snap-always">
+          <a
+            href="/projects"
+            className="inline-flex items-center gap-3 px-10 py-4 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all text-lg"
+          >
+            View All Projects
+            <span className="text-xl">→</span>
+          </a>
+        </div>
       </section>
 
       {/* Contact Section */}
@@ -290,10 +302,10 @@ export default function Home() {
         <div className="max-w-xl mx-auto w-full">
           <div className="border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-10">
             <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
-              {t("contactTitle")}
+              Get In Touch
             </h2>
             <p className="text-lg text-white/60 mb-8">
-              {t("contactText")}
+              I'm always open to new opportunities and interesting projects. Feel free to reach out!
             </p>
           
             <form 
@@ -319,21 +331,21 @@ export default function Home() {
                 
                 if (result.success) {
                   setFormStatus("success");
-                  setFormMessage(t("formSuccess"));
+                  setFormMessage("Message sent successfully! I'll get back to you soon.");
                   setFormData({ name: "", email: "", message: "" });
                 } else {
                   setFormStatus("error");
-                  setFormMessage(t("formError"));
+                  setFormMessage("Something went wrong. Please try again.");
                 }
               } catch {
                 setFormStatus("error");
-                setFormMessage(t("formError"));
+                setFormMessage("Something went wrong. Please try again.");
               }
             }}
           >
             <div>
               <label htmlFor="name" className="block text-sm text-white/60 mb-2">
-                {t("nameLabel")}
+                Name
               </label>
               <input
                 type="text"
@@ -343,13 +355,13 @@ export default function Home() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-purple-500 focus:outline-none transition-colors"
-                placeholder={t("namePlaceholder")}
+                placeholder="Your name"
               />
             </div>
             
             <div>
               <label htmlFor="email" className="block text-sm text-white/60 mb-2">
-                {t("emailLabel")}
+                Email
               </label>
               <input
                 type="email"
@@ -359,13 +371,13 @@ export default function Home() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-purple-500 focus:outline-none transition-colors"
-                placeholder={t("emailPlaceholder")}
+                placeholder="your@email.com"
               />
             </div>
             
             <div>
               <label htmlFor="message" className="block text-sm text-white/60 mb-2">
-                {t("messageLabel")}
+                Message
               </label>
               <textarea
                 id="message"
@@ -375,7 +387,7 @@ export default function Home() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-purple-500 focus:outline-none transition-colors resize-none"
-                placeholder={t("messagePlaceholder")}
+                placeholder="Your message..."
               />
             </div>
             
@@ -385,7 +397,7 @@ export default function Home() {
                 formStatus === "error" ? "bg-red-500/20 text-red-400 border border-red-500/30" :
                 "bg-purple-500/20 text-purple-400 border border-purple-500/30"
               }`}>
-                {formStatus === "loading" ? t("formSending") : formMessage}
+                {formStatus === "loading" ? "Sending..." : formMessage}
               </div>
             )}
             
@@ -394,7 +406,7 @@ export default function Home() {
               disabled={formStatus === "loading"}
               className="w-full px-8 py-3 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {formStatus === "loading" ? t("formSending") : t("sendMessage")}
+              {formStatus === "loading" ? "Sending..." : "Send Message"}
             </button>
           </form>
           </div>
@@ -417,7 +429,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-white/10 relative z-10">
         <div className="max-w-5xl mx-auto text-center text-white/30 text-sm">
-          <p>{t("copyright")}</p>
+          <p>© 2025 Guilherme Pereira. All rights reserved.</p>
         </div>
       </footer>
     </div>
