@@ -2,6 +2,7 @@
 
 import ParticleBackground from "./components/ParticleBackground";
 import { useState, useEffect } from "react";
+import { projects } from "./data/projects";
 
 export default function Home() {
   const [showNav, setShowNav] = useState(false);
@@ -91,7 +92,7 @@ export default function Home() {
               View my work <span className="text-xl">↓</span>
             </a>
             <a
-              href="/curriculo_guilherme_eng.pdf"
+              href="/files/curriculo_guilherme_eng.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 border border-purple-500 text-purple-500 font-medium hover:bg-purple-500 hover:text-white transition-all"
@@ -101,8 +102,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* About Section */}
       <section id="about" className="h-screen flex items-center px-6 relative z-10 snap-start snap-always">
         <div className="max-w-6xl mx-auto w-full">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-12">
@@ -113,7 +112,7 @@ export default function Home() {
             <div className="flex flex-col justify-center">
               <div className="w-48 h-48 rounded-full bg-white/5 border border-white/10 overflow-hidden mb-8">
                 <img 
-                  src="/pfp.jpg" 
+                  src="/files/pfp.jpg" 
                   alt="Guilherme Pereira" 
                   className="w-full h-full object-cover"
                 />
@@ -220,42 +219,25 @@ export default function Home() {
 
       {/* Projects Section - Full screen per project with snap scrolling */}
       <section id="projects" className="relative z-10">
-        {[
-          { 
-            title: "Project One", 
-            subtitle: "Social Media App",
-            desc: "A brief description of this amazing project and the technologies used.",
-            color: "from-blue-600 to-purple-600"
-          },
-          { 
-            title: "Project Two", 
-            subtitle: "Messaging App",
-            desc: "Another cool project showcasing different skills and capabilities.",
-            color: "from-purple-600 to-pink-600"
-          },
-          { 
-            title: "Project Three", 
-            subtitle: "Productivity App",
-            desc: "Yet another impressive project that solves real-world problems.",
-            color: "from-cyan-600 to-blue-600"
-          },
-        ].map((project, index) => (
+        {projects.slice(0, 3).map((project, index) => (
           <div
             key={index}
             className="h-screen flex items-center px-6 snap-start snap-always"
           >
             <div className="max-w-7xl mx-auto w-full grid md:grid-cols-5 gap-8 items-center">
-              {/* Left side - Project Image (larger) */}
               <div className={`relative md:col-span-3 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 blur-3xl scale-110`}></div>
                 <div className="relative bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-lg overflow-hidden">
                   <div className="aspect-[16/10] flex items-center justify-center bg-[#0a0a0f]">
-                    <span className="text-white/20 text-lg">Image</span>
+                    {project.img ? (
+                      <img src={project.img} alt={project.title} className="object-contain max-h-full" />
+                    ) : (
+                      <span className="text-white/20 text-lg">Work in Progress</span>
+                    )}
                   </div>
                 </div>
               </div>
               
-              {/* Right side - Project Info */}
               <div className={`md:col-span-2 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
                 <h3 className="text-4xl md:text-5xl font-light text-white mb-2">
                   {project.title}
@@ -266,18 +248,10 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col gap-4">
                   <a
-                    href="#"
-                    className="inline-flex items-center gap-2 text-white hover:text-purple-400 font-medium tracking-wider text-sm transition-colors group"
-                  >
-                    LIVE APP
-                    <span className="w-8 h-px bg-purple-500 group-hover:w-12 transition-all"></span>
-                  </a>
-                  <a
-                    href="#"
+                    href={project.github_link}
                     className="inline-flex items-center gap-2 text-white hover:text-purple-400 font-medium tracking-wider text-sm transition-colors group"
                   >
                     LEARN MORE
-                    <span className="w-8 h-px bg-purple-500 group-hover:w-12 transition-all"></span>
                   </a>
                 </div>
               </div>

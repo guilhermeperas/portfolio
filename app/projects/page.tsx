@@ -2,51 +2,7 @@
 
 import ParticleBackground from "../components/ParticleBackground";
 import Link from "next/link";
-
-const projects = [
-  { 
-    title: "Project One", 
-    subtitle: "Social Media App",
-    desc: "A brief description of this amazing project and the technologies used.",
-    color: "from-blue-600 to-purple-600",
-    tags: ["React", "Node.js", "MongoDB"]
-  },
-  { 
-    title: "Project Two", 
-    subtitle: "Messaging App",
-    desc: "Another cool project showcasing different skills and capabilities.",
-    color: "from-purple-600 to-pink-600",
-    tags: ["TypeScript", "Socket.io", "PostgreSQL"]
-  },
-  { 
-    title: "Project Three", 
-    subtitle: "Productivity App",
-    desc: "Yet another impressive project that solves real-world problems.",
-    color: "from-cyan-600 to-blue-600",
-    tags: ["Next.js", "Tailwind", "Prisma"]
-  },
-  { 
-    title: "Project Four", 
-    subtitle: "E-commerce Platform",
-    desc: "A brief description of this amazing project and the technologies used.",
-    color: "from-green-600 to-teal-600",
-    tags: ["React", "Stripe", "Node.js"]
-  },
-  { 
-    title: "Project Five", 
-    subtitle: "Portfolio Template",
-    desc: "Another cool project showcasing different skills and capabilities.",
-    color: "from-orange-600 to-red-600",
-    tags: ["Next.js", "Tailwind", "Framer Motion"]
-  },
-  { 
-    title: "Project Six", 
-    subtitle: "Task Manager",
-    desc: "Yet another impressive project that solves real-world problems.",
-    color: "from-indigo-600 to-purple-600",
-    tags: ["React", "Firebase", "TypeScript"]
-  },
-];
+import { projects } from "../data/projects";
 
 export default function ProjectsPage() {
 
@@ -77,7 +33,7 @@ export default function ProjectsPage() {
           <h1 className="text-5xl md:text-6xl font-light text-white mb-4">
             Projects
           </h1>
-          <p className="text-xl text-white/60 max-w-2xl">
+          <p className="text-xl text-white/60 max-w-2xl mb-8">
             A collection of my work and side projects.
           </p>
         </div>
@@ -96,7 +52,11 @@ export default function ProjectsPage() {
                 <div className="relative">
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10 group-hover:opacity-20 transition-opacity`}></div>
                   <div className="aspect-video flex items-center justify-center bg-[#0a0a0f]">
-                    <span className="text-white/20 text-lg">Image</span>
+                    {project.img ? (
+                      <img src={project.img} alt={project.title} className="object-contain max-h-full" />
+                    ) : (
+                      <span className="text-white/20 text-lg">Work in Progress</span>
+                    )}
                   </div>
                 </div>
                 
@@ -111,27 +71,35 @@ export default function ProjectsPage() {
                   </p>
                   
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs border border-white/10 text-white/50"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {project.tags && project.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 text-xs border border-white/10 text-white/50"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   
                   {/* Links */}
                   <div className="flex gap-4">
+                    {project.live_link && (
+                      <a
+                        href={project.live_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-purple-400 text-sm font-medium transition-colors"
+                      >
+                        LIVE APP →
+                      </a>
+                    )}
                     <a
-                      href="#"
-                      className="text-white hover:text-purple-400 text-sm font-medium transition-colors"
-                    >
-                      LIVE APP →
-                    </a>
-                    <a
-                      href="#"
+                      href={project.github_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-white/60 hover:text-purple-400 text-sm font-medium transition-colors"
                     >
                       GITHUB
