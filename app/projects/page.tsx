@@ -14,15 +14,15 @@ export default function ProjectsPage() {
       <nav className="fixed top-0 w-full bg-[#0a0a0f]/90 backdrop-blur-sm z-50">
         <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
           <Link 
-            href="/portfolio"
+            href="/"
             className="text-white/60 hover:text-purple-400 transition-colors text-sm flex items-center gap-2"
           >
             <span>←</span> Home
           </Link>
           <div className="flex items-center gap-8">
-            <Link href="/portfolio#about" className="text-white/60 hover:text-purple-400 transition-colors text-sm">About</Link>
+            <Link href="/#about" className="text-white/60 hover:text-purple-400 transition-colors text-sm">About</Link>
             <span className="text-purple-400 text-sm">Projects</span>
-            <Link href="/portfolio#contact" className="text-white/60 hover:text-purple-400 transition-colors text-sm">Contact</Link>
+            <Link href="/#contact" className="text-white/60 hover:text-purple-400 transition-colors text-sm">Contact</Link>
           </div>
         </div>
       </nav>
