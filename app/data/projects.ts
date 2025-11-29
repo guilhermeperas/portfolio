@@ -35,4 +35,13 @@ export const projects: Project[] = [
     img: "/portfolio/project_imgs/portfolio.png",
     tags: ["Next.js", "Tailwind", "TypeScript"]
   },
+  { 
+    title: "Number Picking Game", 
+    subtitle: "A Fun Math Game",
+    desc: "A simple and engaging number picking game ",
+    color: "from-purple-600 to-pink-600",
+    github_link: "https://github.com/guilhermeperas/number_picker",
+    img: "/portfolio/project_imgs/number_picker.png",
+    tags: ["JavaScript", "HTML", "CSS"]
+  },
 ];
