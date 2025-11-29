@@ -42,6 +42,7 @@ export const projects: Project[] = [
     color: "from-purple-600 to-pink-600",
     github_link: "https://github.com/guilhermeperas/number_picker",
     img: "/portfolio/project_imgs/number_picker.png",
+    live_link: "https://guilhermeperas.github.io/number_picker/",
     tags: ["JavaScript", "HTML", "CSS"]
   },
 ];
