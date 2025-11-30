@@ -45,4 +45,14 @@ export const projects: Project[] = [
     live_link: "https://guilhermeperas.github.io/number_picker/",
     tags: ["JavaScript", "HTML", "CSS"]
   },
+  { 
+    title: "Weather App", 
+    subtitle: "Real-time Weather Updates",
+    desc: "A weather application that provides real-time weather updates and forecasts for any location.",
+    color: "from-purple-600 to-pink-600",
+    github_link: "https://github.com/guilhermeperas/weather-app",
+    img: "/portfolio/project_imgs/weather_app.png",
+    live_link: "https://guilhermeperas.github.io/weather_app/",
+    tags: ["Python", "Flask", "APIs"]
+  },
 ];
