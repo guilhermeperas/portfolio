@@ -52,7 +52,7 @@ export const projects: Project[] = [
     color: "from-purple-600 to-pink-600",
     github_link: "https://github.com/guilhermeperas/weather-app",
     img: "/portfolio/project_imgs/weather_app.png",
-    live_link: "https://guilhermeperas.github.io/weather_app/",
+    live_link: "https://learning-weather-app.up.railway.app/",
     tags: ["Python", "Flask", "APIs"]
   },
 ];
